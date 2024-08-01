@@ -11,7 +11,16 @@ import pdb
 import copy
 from torch.optim import Optimizer
 
+class GradientUpdate(net):
+    def __init__(self):
+        self.net = next
+        self.gradients = []
 
+    def get_gradient(self):
+        for parameter in self.net.parameters():
+            self.gradients.append(parameter.grad)
+        
+        return self.gradients
 
 class DatasetSplit(Dataset):
     def __init__(self, dataset, idxs):
